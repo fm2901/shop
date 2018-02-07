@@ -1,8 +1,10 @@
 <?php
 	function Query($sql){
 		$res = array();
-		if($r = mysql_query($sql)){
-			$res = mysql_fetch_array($r);
+		if($q = mysql_query($sql)){
+			while($r = mysql_fetch_assoc($q)){
+				$res[] = $r;
+			}
 		}
 		return $res;
 	}

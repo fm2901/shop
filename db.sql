@@ -93,12 +93,13 @@ CREATE TABLE `product` (
   `sector` int(11) DEFAULT NULL,
   `exp_date` date DEFAULT NULL,
   `count` double DEFAULT NULL,
+  `percent` double DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`shcode`,`ed_izm`,`name`,`price_in`,`price_out`,`income`,`id_postavshik`,`sector`,`exp_date`,`count`) values (1,'1',1,'RC Cola',7,8,1,1,NULL,'2018-04-01',6);
+insert  into `product`(`id`,`shcode`,`ed_izm`,`name`,`price_in`,`price_out`,`income`,`id_postavshik`,`sector`,`exp_date`,`count`,`percent`) values (1,'1',1,'RC Cola',7,8,1,1,NULL,'2018-04-01',6,14.3);
 
 /*Table structure for table `sale` */
 
