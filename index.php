@@ -11,5 +11,8 @@
 		include("php/".$_GET["c"].".php");
 	}else{
 		include("php/prihod.php");
+		$a = 1;
 	}
+	
+	
 ?>
