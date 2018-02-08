@@ -16,7 +16,7 @@
 <table cellpadding="0" cellspacing="0" style="width:100%">
 	<tr>
 		<td style="width:70%;border:1px solid #ccc;" valign="top">
-			<table cellpadding="0" cellspacing="0" style="width:100%">
+			<table cellpadding="0" cellspacing="0" style="width:100%" id="prihodList">
 				<tr>
 					<th>Штрихкод</th>
 					<th>Наименование</th>
@@ -33,11 +33,12 @@
 			<input name="shcode" placeholder="Штрихкод">
 			<input name="name" placeholder="Наименование">
 			<select name="id_postavshik" placeholder="Поставщик"><option><?=$postavshik?></select>
-			<input name="count" placeholder="Количество">
+			<input name="cnt" placeholder="Количество">
 			<input name="price_in" placeholder="Приход">
 			<input name="percent" placeholder="Наценка">
 			<input name="price_out" placeholder="Продажа">
 			<input name="exp_date" placeholder="Годен до">
+			<input name="id" type="hidden">
 			<input name="addToPrihodList" type="submit" value="Добавить">
 		</td>
 	</tr>
@@ -55,6 +56,11 @@
 		border-right: 1px solid #ccc;
 		padding:10px;
 		font-size:1em;
+	}
+	#prihodList td{
+		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		padding:3px;
 	}
 </style>
 
