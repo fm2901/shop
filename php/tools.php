@@ -32,6 +32,9 @@
 			$key = substr($key,0,-1);
 			$val = substr($val,0,-1);
 			$sql .= "(".$key.") VALUES(".$val.")";
+			if(mysql_query($sql)){
+				return mysql_insert_id();
+			}
 		}else{
 			foreach($arr as $k=>$v){
 				$key = "";
@@ -46,7 +49,9 @@
 			$key = substr($key,0,-1);
 			$val = substr($val,0,-1);
 			$sql .= "(".$key.") VALUES".$val;
+			mysql_query($sql);
 		}
+		//$r = mysql_query($sql);
 		return $sql;
 	}
 	function update($tbl,$arr){
@@ -61,8 +66,23 @@
 				}
 			}
 			$sql = substr($sql,0,-1).$cond;
-		}	
-		return $sql;
+			echo $sql;
+			mysql_query($sql);
+		}else{
+			foreach($arr as $k=>$v){
+				$sql = "UPDATE ".$tbl." SET ";
+				foreach($v as $kk=>$vv){
+					if($kk <> "id"){
+						$sql .= $kk."='".$vv."',";
+					}else{
+						$cond = " WHERE ".$kk."=".$vv;
+					}
+				}
+				$sql = substr($sql,0,-1).$cond;
+				echo $sql;
+				mysql_query($sql);
+			}
+		}
 	}
 	function delete($tbl,$arr){
 		$sql = "DELETE FROM ".$tbl." ";
@@ -71,5 +91,15 @@
 		}	
 		return $sql;
 	}
-	
+	function checkUpdate($arr,$arr2){
+		$res["id"] = $arr2["id"];
+		foreach($arr as $k=>$v){
+			if($v <> $arr2[$k]){
+				$res[$k] = $arr2[$k];
+			}
+			
+		}
+		$res["count"] = intval($arr["count"]) + intval($res["count"]);
+		return $res;
+	}
 ?>

@@ -24,16 +24,17 @@
 					<th>Количество</th>
 					<th>Приход</th>
 					<th>Наценка</th>
+					<th>Продажа</th>
 					<th>Годен до</th>
-					<th style="border-right:none">Продажа</th>
+					<th style="border-right:none"></th>
 				</tr>
 			</table>
 		</td>
 		<td valign="top">
-			<input name="shcode" placeholder="Штрихкод">
+			<input name="shcode" placeholder="Штрихкод" autocomplete="off">
 			<input name="name" placeholder="Наименование">
-			<select name="id_postavshik" placeholder="Поставщик"><option><?=$postavshik?></select>
-			<input name="cnt" placeholder="Количество">
+			<select name="id_postavshik" placeholder="Поставщик"><?=$postavshik?></select>
+			<input name="count" placeholder="Количество">
 			<input name="price_in" placeholder="Приход">
 			<input name="percent" placeholder="Наценка">
 			<input name="price_out" placeholder="Продажа">
@@ -41,6 +42,9 @@
 			<input name="id" type="hidden">
 			<input name="addToPrihodList" type="submit" value="Добавить">
 		</td>
+	</tr>
+	<tr>
+		<td><input type="submit" name="addPrihod" value="Сохранить"></td>
 	</tr>
 </table>
 <style>
@@ -61,6 +65,13 @@
 		border-bottom: 1px solid #ccc;
 		border-right: 1px solid #ccc;
 		padding:3px;
+	}
+	input[type=button]{
+		width: 55px;
+		height: 21px;
+		font-size: 69%;
+		padding:0;
+		margin:1px;
 	}
 </style>
 
