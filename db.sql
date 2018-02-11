@@ -40,11 +40,11 @@ CREATE TABLE `postavshik` (
   `tel` varchar(60) DEFAULT NULL,
   `saldo` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `postavshik` */
 
-insert  into `postavshik`(`id`,`name`,`tel`,`saldo`) values (1,'Абдурашид','926100100',NULL);
+insert  into `postavshik`(`id`,`name`,`tel`,`saldo`) values (1,'Абдурашид','926100100',NULL),(2,'Coca-Cola',NULL,NULL);
 
 /*Table structure for table `prihod` */
 
@@ -52,13 +52,16 @@ DROP TABLE IF EXISTS `prihod`;
 
 CREATE TABLE `prihod` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `summa` double DEFAULT NULL,
+  `sum_in` double DEFAULT NULL,
+  `sum_out` double DEFAULT NULL,
   `datetime` datetime DEFAULT NULL,
   `user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `prihod` */
+
+insert  into `prihod`(`id`,`sum_in`,`sum_out`,`datetime`,`user`) values (1,30,40,'2018-02-11 15:58:09',NULL);
 
 /*Table structure for table `prihod_info` */
 
@@ -67,15 +70,18 @@ DROP TABLE IF EXISTS `prihod_info`;
 CREATE TABLE `prihod_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product` int(11) DEFAULT NULL,
-  `postavshik` int(11) DEFAULT NULL,
+  `id_postavshik` int(11) DEFAULT NULL,
   `price_in` double DEFAULT NULL,
   `price_out` double DEFAULT NULL,
   `count` double DEFAULT NULL,
   `summa` double DEFAULT NULL,
+  `id_prihod` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `prihod_info` */
+
+insert  into `prihod_info`(`id`,`product`,`id_postavshik`,`price_in`,`price_out`,`count`,`summa`,`id_prihod`) values (1,2,1,5,7,4,20,1),(2,5,1,5,6,2,10,1);
 
 /*Table structure for table `product` */
 
@@ -95,11 +101,11 @@ CREATE TABLE `product` (
   `count` double DEFAULT NULL,
   `percent` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`shcode`,`ed_izm`,`name`,`price_in`,`price_out`,`income`,`id_postavshik`,`sector`,`exp_date`,`count`,`percent`) values (1,'1',1,'RC Cola',7,8,1,1,NULL,'2018-04-01',6,14.3);
+insert  into `product`(`id`,`shcode`,`ed_izm`,`name`,`price_in`,`price_out`,`income`,`id_postavshik`,`sector`,`exp_date`,`count`,`percent`) values (1,'1',1,'RC Cola',6,7,1,2,NULL,'2018-04-02',0,14.5),(2,'2',1,'Fanta',5,7,1,1,NULL,'2018-04-11',4,14),(3,'3',1,'Coca-Cola',6,7,2,2,NULL,'2018-05-22',0,13),(4,'4601518353673',1,'Банан',2,3,1,1,NULL,'2018-02-15',0,50),(5,'4601518361044',NULL,'Kinder',5,6,NULL,1,NULL,'2018-01-21',3,20);
 
 /*Table structure for table `sale` */
 
