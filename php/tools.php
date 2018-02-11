@@ -20,6 +20,12 @@
 		}
 		return count(array_filter(array_keys($arr), 'is_string')) > 0;
 	}
+	function last_inserted($tbl){
+		$sql = "SELECT id FROM ".$tbl." ORDER BY id DESC LIMIT 1";
+		$q = mysql_query($sql);
+		$r = mysql_fetch_array($q);
+		return $r["id"];
+	}
 	function insert($tbl,$arr){
 		$sql = "INSERT INTO ".$tbl;
 		$key = "";
@@ -33,7 +39,7 @@
 			$val = substr($val,0,-1);
 			$sql .= "(".$key.") VALUES(".$val.")";
 			if(mysql_query($sql)){
-				return mysql_insert_id();
+				return last_inserted($tbl);
 			}
 		}else{
 			foreach($arr as $k=>$v){
@@ -93,11 +99,11 @@
 	}
 	function checkUpdate($arr,$arr2){
 		$res["id"] = $arr2["id"];
+		$res["count"] = 0;
 		foreach($arr as $k=>$v){
 			if($v <> $arr2[$k]){
 				$res[$k] = $arr2[$k];
-			}
-			
+			}	
 		}
 		$res["count"] = intval($arr["count"]) + intval($res["count"]);
 		return $res;

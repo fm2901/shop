@@ -35,11 +35,26 @@
 				$prihod["sum_out"] += $v["count"]*$v["price_out"];
 			}
 		}
-		if($id = insert("prihod",$prihod)>0){
+		$id = insert("prihod",$prihod);
+		if($id>0){
 			foreach($prihod_info as $k=>$v){
 				$prihod_info[$k]["id_prihod"] = $id;
 			}
 			insert("prihod_info",$prihod_info);
 			update("product",$update);
+			unset($_SESSION["original"]);
 		}
+	}
+	if(isset($_POST["addNewProduct"])){
+		unset($_POST["addNewProduct"]);
+		$id = insert("product",$_POST);
+		$v = $_POST;
+		$_SESSION["original"][$id] = array("id_postavshik" => $v["id_postavshik"]
+												,"count"		=> 1
+												,"price_in"		=> $v["price_in"]
+												,"price_out"	=> $v["price_out"]
+												,"percent"		=> $v["percent"]
+												,"exp_date"		=> $v["exp_date"]
+												);
+		echo $id;
 	}

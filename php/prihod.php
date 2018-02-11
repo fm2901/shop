@@ -31,8 +31,8 @@
 			</table>
 		</td>
 		<td valign="top">
-			<input name="shcode" placeholder="Штрихкод" autocomplete="off">
-			<input name="name" placeholder="Наименование">
+			<input name="shcode" placeholder="Штрихкод" autocomplete="off"><input type="submit" value="GEN" id="genShcode">
+			<input name="name" id="name" placeholder="Наименование">
 			<select name="id_postavshik" placeholder="Поставщик"><?=$postavshik?></select>
 			<input name="count" placeholder="Количество">
 			<input name="price_in" placeholder="Приход">
@@ -72,6 +72,11 @@
 		font-size: 69%;
 		padding:0;
 		margin:1px;
+	}
+	#genShcode{
+		font-size: 0.8em;
+		width: 42px;
+		margin:0;
 	}
 </style>
 
