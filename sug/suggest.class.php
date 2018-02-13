@@ -14,7 +14,8 @@ class Suggest
   {   
     // подключаемся к базе данных
     $this->mMysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, 
-                                                          DB_DATABASE);    
+                                                          DB_DATABASE); 
+	$this->mMysqli->set_charset("utf8");														  
   }
   
   // деструктор   

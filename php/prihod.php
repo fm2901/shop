@@ -15,7 +15,7 @@
 ?>
 <table cellpadding="0" cellspacing="0" style="width:100%">
 	<tr>
-		<td style="width:70%;border:1px solid #ccc;" valign="top">
+		<td style="width:80%;border:1px solid #ccc;" valign="top">
 			<table cellpadding="0" cellspacing="0" style="width:100%" id="prihodList">
 				<tr>
 					<th>Штрихкод</th>
