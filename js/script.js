@@ -8,7 +8,7 @@ $(document).ready(function(){
 			$.post("php/handler.php",{'getByShcode' : shcode},function(res){
 				document.p = p = eval('(' + res + ')');
 				p.shcode = shcode;
-				p.count = 1;
+				//p.count = 1;
 				fillPrihodForm(p);
 			});
 			$(this).val("");
@@ -33,9 +33,11 @@ $(document).ready(function(){
 	}
 	$("input[name=addToPrihodList]").click(function(e){
 		e.preventDefault();
+		var btn = $(this);
+		$(".chosen")
 		if(document.p != 0 && typeof(document.p) != 'undefined'){
 			var r = getPrihodForm();
-			$(this).parent("td").children().not("input[type=submit],select").val("");
+			btn.parent("td").children().not("input[type=submit],select").val("");
 			addToPrihodList(r);
 		}else{
 			var r = getPrihodForm();
@@ -49,15 +51,16 @@ $(document).ready(function(){
 		}
 	});
 	function fillPrihodForm(p){
-		$("input[name=shcode]").val(p.shcode);
+		$("input[name=shcode]").val("");
 		$("input[name=name]").val(p.name);
-		$("input[name=count]").val(p.count);
+		$("input[name=count]").val("").focus();
 		$("input[name=price_in]").val(p.price_in);
 		$("input[name=percent]").val(p.percent);
 		$("input[name=price_out]").val(p.price_out);
 		$("input[name=exp_date]").val(p.exp_date);
 		$("input[name=id]").val(p.id);
 		$("select[name=id_postavshik]>option[value="+p.id_postavshik+"]").attr("selected","selected");
+		$(".chosen").trigger("chosen:updated");
 	}
 	function getPrihodForm(){
 		var r = Object();
@@ -96,7 +99,7 @@ $(document).ready(function(){
 		source: "sug/suggest.php",
 		minLength: 2,
 		select: function( event, ui ){
-			ui.item.count = 1;
+			//ui.item.count = 1;
 			fillPrihodForm(ui.item);
 			document.p = ui.item;
 		}
@@ -106,4 +109,5 @@ $(document).ready(function(){
 		var shcode = "460" + parseInt(new Date().getTime()/1000);
 		$("input[name=shcode]").val(shcode);
 	});
+	$(".chosen").chosen();
 });

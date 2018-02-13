@@ -15,7 +15,7 @@
 ?>
 <table cellpadding="0" cellspacing="0" style="width:100%">
 	<tr>
-		<td style="width:80%;border:1px solid #ccc;" valign="top">
+		<td style="width:75%;border:1px solid #ccc;" valign="top">
 			<table cellpadding="0" cellspacing="0" style="width:100%" id="prihodList">
 				<tr>
 					<th>Штрихкод</th>
@@ -33,7 +33,7 @@
 		<td valign="top">
 			<input name="shcode" placeholder="Штрихкод" autocomplete="off"><input type="submit" value="GEN" id="genShcode">
 			<input name="name" id="name" placeholder="Наименование">
-			<select name="id_postavshik" placeholder="Поставщик"><?=$postavshik?></select>
+			<select name="id_postavshik" class="chosen" data-placeholder="Поставщик"><option><?=$postavshik?></select>
 			<input name="count" placeholder="Количество">
 			<input name="price_in" placeholder="Приход">
 			<input name="percent" placeholder="Наценка">
@@ -50,16 +50,18 @@
 <style>
 	input,select{
 		width:250px;
-		height:35px;
+		height:30px;
 		font-size:1.4em;
 		padding:0 5px;
 		margin:6px;
 	}
-	th{
-		border-bottom: 1px solid #ccc;
-		border-right: 1px solid #ccc;
-		padding:10px;
-		font-size:1em;
+	.chosen-container{
+		width:250px;
+		font-size:1.4em;
+		margin:5px;
+	}
+	a.chosen-single.chosen-default{
+		border-radius:0;
 	}
 	#prihodList td{
 		border-bottom: 1px solid #ccc;
