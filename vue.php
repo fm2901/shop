@@ -5,6 +5,7 @@
 		</li>
 	</ul>
 </div>
+https://ru.vuejs.org/
 <script src="https://unpkg.com/vue"></script>
 <script>
 	const app = new Vue({
@@ -18,3 +19,4 @@
 		}
 	})
 </script>
+
